@@ -1,0 +1,11 @@
+import keyboard
+import random
+import time
+
+def perform_key_event(key_to_press, min_interval, max_interval, message_queue):
+    keyboard.press(key_to_press)
+    keyboard.release(key_to_press)
+    ms_delay = random.uniform(min_interval, max_interval)
+    time.sleep(ms_delay)
+    log_message = f"Key {key_to_press} pressed with interval {ms_delay:.4f}s\n"
+    message_queue.put_nowait(log_message)
